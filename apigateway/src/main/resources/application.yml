@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/users/**
+        - id: course-service
+          uri: lb://COURSE-SERVICE
+          predicates:
+            - Path=/api/courses/**
+        - id: enrollment-service
+          uri: lb://ENROLLMENT-SERVICE
+          predicates:
+            - Path=/api/enrollments/**
